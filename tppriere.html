@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <h1>Horaires de prière</h1>
+
+    <div id="sl">
+        <div id="text"></div>
+    </div>
+
+    <script>
+        const xhr= new XMLHttpRequest();
+
+
+        navigator.geolocation.getCurrentPosition(success);
+
+        function success(position){
+
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //xhr.open('GET', 'http://api.aladhan.com/v1/calendar?latitude=51.508515&longitude=51.508515');
+        xhr.open('GET', 'http://api.aladhan.com/v1/calendar?latitude='+latitude+'&longitude='+longitude);
+
+    
+        xhr.onloadstart = function (){
+            document.getElementById("text").innerHTML = "chargement...";
+        };
+
+
+        xhr.onloadend = function (){
+            const data = JSON.parse(xhr.response);
+            console.log(data);
+
+            const today = new Date();
+            const day = today.getDate();
+            console.log(data.data[11].date.gregorian.day);
+            console.log(today);
+            console.log(day);
+            //alert(day);
+
+            for (i = 0; i<31 ; i++){
+
+            if (data.data[i].date.gregorian.day == day){
+            document.getElementById("text").innerHTML = "<span>Fajr :      </span>"+data.data[i].timings.Fajr+"<br>";
+            document.getElementById("text").innerHTML += "<span>Sunrise :      </span>"+data.data[i].timings.Sunrise+"<br>";
+            document.getElementById("text").innerHTML += "<span>Dhuhr :      </span>"+data.data[i].timings.Dhuhr+"<br>";
+            document.getElementById("text").innerHTML += "<span>Asr :      </span>"+data.data[i].timings.Asr+"<br>";
+            document.getElementById("text").innerHTML += "<span>Maghrib :      </span>"+data.data[i].timings.Maghrib+"<br>";
+            document.getElementById("text").innerHTML += "<span>Isha :      </span>"+data.data[i].timings.Isha+"<br>";
+        }
+        }
+        
+        };
+
+
+        xhr.onerror = function(){
+            console.log('La requete a échoué');
+            document.getElementById("text").innerHTML = "La requete a échoué";
+        };
+
+        xhr.send();
+
+    }
+        
+
+    </script>
+</body>
+</html>

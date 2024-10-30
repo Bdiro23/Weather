@@ -1,0 +1,146 @@
+@font-face {
+    font-family: montserrat;
+    src: url("Montserrat-Regular.ttf");
+}
+*{
+    margin:0%;
+    padding:0%;
+    box-sizing: border-box;
+    font-family: montserrat;
+}
+@keyframes rotate{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes translate{
+    0%{
+        transform: translateX(-50px);
+    }
+    100%{
+        transform: translateX(30px);
+    }
+}
+.meteo{
+    background-color: skyblue;
+    width:40%;
+    margin:auto;
+    color:white;
+}
+header{
+    display:flex;
+    justify-content: space-between;
+}
+.left{
+    display:flex;
+    flex-direction: column;
+    padding:30px;
+}
+.left :nth-child(1){
+    font-size: 4rem;
+}
+ .left :nth-child(2){
+    font-size: 1.5rem;
+} 
+.right :nth-child(1){
+    padding:30px;
+    font-size:4rem;
+    animation-name: rotate;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+.degre{
+    display:flex;
+    flex-direction: column;
+    padding:10px 40px;
+    padding-bottom: 30px;
+}
+section{
+    gap:20px;
+    height:150px;
+}
+section div{
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+    row-gap:10px;
+    text-align: center;
+}
+.fa-sun,.fa-cloud-sun{
+    color:gold;
+}
+.fa-moon{
+    color:#00474f;
+}
+.fa-cloud-moon-rain{
+    color:#4169e1;
+}
+.fa-cloud-moon{
+    color:#AAAAAA
+}
+.fa-cloud-rain{
+    color:#f0f0f0;
+}
+.fa-cloud{
+    color:#038abf;
+}
+.fa-droplet{
+    color:#41a4ea;
+}
+section,aside,footer{
+    display:flex;
+    overflow:scroll;
+    background-color: rgba(236, 231, 231, 0.5);
+    border-radius: 20px;
+}
+aside{
+    margin-top:30px;
+    height: 250px;
+    gap:40px;
+
+}
+aside div{
+    display:flex;
+    flex-direction: column;
+    row-gap: 19px;
+    margin:auto;
+   
+}
+.deg,.days{
+    row-gap:1rem;
+}
+footer{
+    margin-top: 30px;
+    display:flex;
+    justify-content: space-around;
+    height:200px;
+    padding:20px
+}
+footer div{
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+    row-gap: 10px;
+}
+footer div :nth-child(3){
+    font-size: 5rem;
+}
+footer div :nth-child(4){
+    font-size: 3rem;
+    position:absolute;
+    margin-top:100px;
+    margin-left: 22px;
+}
+::-webkit-scrollbar {
+    display: none;
+    }
+   .pluie{
+        display:flex;
+        flex-direction: row;
+        gap:3px;
+    }
+   
